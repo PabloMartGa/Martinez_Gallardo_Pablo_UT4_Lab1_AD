@@ -17,48 +17,30 @@ public class Nave implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_nave")
-    private int id;
-    
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "nombre_id")
     private String nombre;
     
-    @Column(name = "mdoelo", nullable = false, length = 50)
+    @Column(name = "mdoelo", length = 50)
     private String modelo;
     
-    @Column(name = "capacidad_pasajeros", nullable = false)
+    @Column(name = "capacidad_pasajeros")
     private int capacidadPasajeros;
     
-    @Column(name = "estado_sistema", nullable = false, length = 20)
+    @Column(name = "estado_sistema", length = 20)
     private String estadoSistema;
 
     
     public Nave() {
     }
 
-    
-    public Nave(int id, String nombre, String modelo, int capacidadPasajeros, String estadoSistema) {
-        this.id = id;
+    public Nave(String nombre, String modelo, int capacidadPasajeros, String estadoSistema) {
         this.nombre = nombre;
         this.modelo = modelo;
         this.capacidadPasajeros = capacidadPasajeros;
         this.estadoSistema = estadoSistema;
     }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
+    
     /**
      * @return the nombre
      */
@@ -119,6 +101,6 @@ public class Nave implements Serializable{
     
     @Override
     public String toString(){
-        return "ID: " + id + " | Nombre: " + nombre + " (" + modelo + ") | Estado: " + estadoSistema;
+        return "Nombre: " + nombre + " (" + modelo + ") | Estado: " + estadoSistema + " | Capacidad: " + capacidadPasajeros;
     }
 }

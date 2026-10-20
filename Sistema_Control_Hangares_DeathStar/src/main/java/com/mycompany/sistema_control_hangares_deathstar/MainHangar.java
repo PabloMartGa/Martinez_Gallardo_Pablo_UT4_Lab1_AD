@@ -4,6 +4,8 @@
 
 package com.mycompany.sistema_control_hangares_deathstar;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM2P
@@ -11,6 +13,8 @@ package com.mycompany.sistema_control_hangares_deathstar;
 public class MainHangar {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Scanner sc = new Scanner(System.in);
+        
+        
     }
 }
