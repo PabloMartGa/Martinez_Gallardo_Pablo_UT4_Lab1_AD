@@ -37,8 +37,27 @@ public class HangarControl {
         System.out.println(n.toString());
     }
     
-    public void actualizarEstadoNave(int idNave, String nuevoEstado){
-        System.out.println("");
+    public void actualizarEstadoNave(){
+        System.out.println("Inserta ID de la nave que se va a modificar el estado: ");
+        String id = sc.nextLine();
+        
+        System.out.println("Inserte el nuevo estado de la nave");
+        String estadoActualizado = sc.nextLine();
+        
+        try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            String hqlFiltro = "UPDATE naves SET estado_sistema = :estadoRef WHERE nombre_id = :idRef";
+            
+            Query<Nave> queryFiltro = session.createQuery(hqlFiltro, Nave.class);
+            queryFiltro.setParameter("idRef", id);
+            queryFiltro.setParameter("estadoRef", estadoActualizado);
+            
+            System.out.println("Estado de la nave actualizado correctamente");
+            
+        } catch (Exception e) {
+            System.err.println("Error en el filtrado: " + e.getMessage());
+        } finally {
+            HibernateUtil.shutdown();
+        }
     }
     
     public void obtenerCazasPorModelo(String modeloBuscado){
