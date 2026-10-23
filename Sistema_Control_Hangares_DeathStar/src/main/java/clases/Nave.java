@@ -28,10 +28,13 @@ public class Nave implements Serializable{
     
     @Column(name = "estado_sistema", length = 20)
     private String estadoSistema;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "planeta_id", foreignKey = @ForeignKey(name = "FK_NAVE_PLANETA"))
+    private Planeta planeta;
 
     
-    public Nave() {
-    }
+    public Nave() {}
 
     public Nave(String nombre, String modelo, int capacidadPasajeros, String estadoSistema) {
         this.nombre = nombre;
@@ -39,6 +42,8 @@ public class Nave implements Serializable{
         this.capacidadPasajeros = capacidadPasajeros;
         this.estadoSistema = estadoSistema;
     }
+
+    
     
     
     /**
@@ -102,5 +107,19 @@ public class Nave implements Serializable{
     @Override
     public String toString(){
         return "Nombre: " + nombre + " (" + modelo + ") | Estado: " + estadoSistema + " | Capacidad: " + capacidadPasajeros;
+    }
+
+    /**
+     * @return the planetaOrigen
+     */
+    public Planeta getPlanetaOrigen() {
+        return planeta;
+    }
+
+    /**
+     * @param planetaOrigen the planetaOrigen to set
+     */
+    public void setPlanetaOrigen(Planeta planetaOrigen) {
+        this.planeta = planeta;
     }
 }
